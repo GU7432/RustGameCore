@@ -75,10 +75,13 @@ impl Puzzle16 {
     pub fn iswin(&self) -> bool {
         for (i, v) in self.data.iter().enumerate() {
             if i + 1 != *v as usize && i != 15 {
-                return false
+                return false;
             }
         }
         true
+    }
+    pub fn get_board_slice(&self) -> &[i32] {
+        return self.data.as_slice();
     }
     fn get_idx(i: usize, j: usize) -> usize {
         i * 4 + j
@@ -125,4 +128,3 @@ impl Puzzle16 {
         (inv + row_from_bottom) % 2 == 1
     }
 }
-
