@@ -1,2 +1,0 @@
-!!! 需要cbindgen !!!
-cbindgen --config cbindgen.toml --output include/rustcore.h 
