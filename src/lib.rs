@@ -1,5 +1,5 @@
-use crate::puzzle::tools::Puzzle16;
-pub mod puzzle;
+use crate::games::puzzle_game::Puzzle16;
+pub mod games;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn puzzle_new(_n: usize) -> *mut Puzzle16 {
@@ -9,7 +9,7 @@ pub extern "C" fn puzzle_new(_n: usize) -> *mut Puzzle16 {
 
 
 #[unsafe(no_mangle)]
-pub extern "C" fn action(puz: *mut Puzzle16, op: i32) {
+pub extern "C" fn puzzle_action(puz: *mut Puzzle16, op: i32) {
     assert!(!puz.is_null());
     unsafe {
         (*puz).action(op);
@@ -17,7 +17,7 @@ pub extern "C" fn action(puz: *mut Puzzle16, op: i32) {
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn is_win(puz: *mut Puzzle16) -> bool {
+pub extern "C" fn puzzle_is_win(puz: *mut Puzzle16) -> bool {
     assert!(!puz.is_null());
     unsafe {
         return (*puz).iswin();
