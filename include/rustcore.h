@@ -12,11 +12,13 @@
 
 typedef struct Puzzle16 Puzzle16;
 
-struct Puzzle16 *puzzle_new(uintptr_t _n);
+struct Puzzle16 *puzzle_new(void);
 
-void action(struct Puzzle16 *puz, int32_t op);
+void puzzle_action(struct Puzzle16 *puz, int32_t op);
 
-bool is_win(struct Puzzle16 *puz);
+bool puzzle_is_win(struct Puzzle16 *puz);
+
+uint32_t puzzle_snapshot(const struct Puzzle16 *puz, int32_t *out);
 
 void puzzle_free(struct Puzzle16 *puz);
 

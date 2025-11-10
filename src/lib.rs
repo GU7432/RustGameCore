@@ -25,7 +25,7 @@ pub extern "C" fn puzzle_is_win(puz: *mut Puzzle16) -> bool {
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn puzzle_snapshot(puz: *const Puzzle16, out: *mut i32) -> usize {
+pub extern "C" fn puzzle_snapshot(puz: *const Puzzle16, out: *mut i32) -> u32 {
     use core::ptr::copy_nonoverlapping;
     if puz.is_null() || out.is_null() {
         return 0;
