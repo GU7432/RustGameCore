@@ -3,12 +3,11 @@ pub mod puzzle;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn puzzle_new(_n: usize) -> *mut Puzzle16 {
-    // 建立固定容量的 Vec，之後只改內容、不增刪，避免 reallocate
     let v = Puzzle16::new();
     Box::into_raw(Box::new(v))
 }
 
-// 範例：做一次「就地」更新（不改長度/容量）
+
 #[unsafe(no_mangle)]
 pub extern "C" fn action(puz: *mut Puzzle16, op: i32) {
     assert!(!puz.is_null());
