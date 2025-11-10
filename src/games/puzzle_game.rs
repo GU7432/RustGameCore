@@ -3,7 +3,7 @@ use rand::thread_rng;
 use std::io::{self, Write};
 
 pub struct Puzzle16 {
-    pub data: Vec<i32>,
+    data: Vec<i32>,
 }
 impl Puzzle16 {
     pub fn new() -> Puzzle16 {

@@ -5,7 +5,7 @@ use crossterm::{
     terminal::{self, ClearType, EnterAlternateScreen, LeaveAlternateScreen},
     ExecutableCommand,
 };
-use rustgame::puzzle::tools::Puzzle16;
+use rustgame::games::puzzle_game::Puzzle16;
 
 fn main() -> io::Result<()> {
     let mut puz = Puzzle16::new();
