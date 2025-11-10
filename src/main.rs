@@ -5,7 +5,7 @@ use crossterm::{
     terminal::{self, ClearType, EnterAlternateScreen, LeaveAlternateScreen},
     ExecutableCommand,
 };
-use rustgame::games::puzzle_game::Puzzle16;
+use rustgame::games::{puzzle_game::Puzzle16, tic_tac_toe_game::TicTacToe};
 
 fn main() -> io::Result<()> {
     let mut puz = Puzzle16::new();
@@ -51,5 +51,15 @@ fn run_puzzle_loop(puz: &mut Puzzle16, stdout: &mut Stdout) -> io::Result<()> {
         if puz.iswin() == true {
             break Ok(());
         }
+    }
+}
+
+fn run_tictactoe() {
+    let game = TicTacToe::new(3);
+    game.show();
+
+
+    loop {
+        
     }
 }
