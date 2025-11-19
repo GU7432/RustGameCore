@@ -22,14 +22,14 @@ impl TicTacToe {
     pub fn player1(&mut self, id: u32) -> Result<bool, String> {
         // turn == false -> can move
         if self.turn == true {
-            return Err("Not Your Turn!\n".to_string());
+            return Err("Not Your Turn!".to_string());
         }
 
         if self.board[id as usize] == None {
             self.board[id as usize] = Some(1);
             self.p1.push_back(id);
         } else {
-            return Err("Have\n".to_string());
+            return Err("Invalid Move".to_string());
         }
         self.cleanup_expired();
         let iswin = self.is_win(1);
@@ -40,14 +40,14 @@ impl TicTacToe {
     pub fn player2(&mut self, id: u32) -> Result<bool, String> {
         // turn == true -> can move
         if self.turn == false {
-            return Err("Not Your Turn!\n".to_string());
+            return Err("Not Your Turn!".to_string());
         }
 
         if self.board[id as usize] == None {
             self.board[id as usize] = Some(2);
             self.p2.push_back(id);
         } else {
-            return Err("Have\n".to_string());
+            return Err("Invalid Move".to_string());
         }
         self.cleanup_expired();
         let iswin = self.is_win(2);
@@ -59,7 +59,7 @@ impl TicTacToe {
         for i in 0..3 {
             for j in 0..3 {
                 if let Some(x) = self.board[i * 3 + j] {
-                    print!("{} ", x);
+                    print!("{} ", if x == 1 {"O"} else {"X"});
                 } else {
                     print!(". ");    
                 }

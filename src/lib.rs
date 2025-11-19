@@ -1,4 +1,4 @@
-use crate::games::puzzle_game::Puzzle16;
+use crate::games::{puzzle_game::Puzzle16, tic_tac_toe_game::TicTacToe};
 pub mod games;
 
 // PuzzleGame
@@ -43,5 +43,53 @@ pub extern "C" fn puzzle_free(puz: *mut Puzzle16) {
         unsafe {
             drop(Box::from_raw(puz));
         }
+    }
+}
+
+// tictactoe
+#[unsafe(no_mangle)]
+pub extern "C" fn tictactoe_new() -> *mut TicTacToe {
+    let game = TicTacToe::new(3);
+    Box::into_raw(Box::new(game))
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn tictactoe_free(game: *mut TicTacToe) {
+    if !game.is_null() {
+        unsafe {
+            drop(Box::from_raw(game));
+        }
+    }
+}
+
+pub extern "C" fn tictactoe_player1_action(game: *mut TicTacToe, grid: u32) -> bool {
+    assert!(!game.is_null());
+    unsafe {
+        match (*game).player1(grid) {
+            Ok(iswin) => {
+                return iswin;
+            },
+            Err(msg) => {
+                println!("{}", msg);
+                false
+            }
+        }
+
+    }
+}
+
+pub extern "C" fn tictactoe_player2_action(game: *mut TicTacToe, grid: u32) -> bool {
+    assert!(!game.is_null());
+    unsafe {
+        match (*game).player2(grid) {
+            Ok(iswin) => {
+                return iswin;
+            },
+            Err(msg) => {
+                println!("{}", msg);
+                false
+            }
+        }
+
     }
 }

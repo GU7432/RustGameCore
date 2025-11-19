@@ -39,6 +39,7 @@ fn main() {
                 game.show();
                 if x == true {
                     println!("{} is win", if turn == false {"Player1"} else {"Player2"});
+                    return;
                 }
                 turn = !turn;
             }
