@@ -1,7 +1,5 @@
 use std::collections::VecDeque;
 
-use rand::distributions::Open01;
-
 pub struct TicTacToe {
     board: Vec<Option<i32>>,
     turn: bool,
