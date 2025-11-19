@@ -12,6 +12,8 @@
 
 typedef struct Puzzle16 Puzzle16;
 
+typedef struct TicTacToe TicTacToe;
+
 struct Puzzle16 *puzzle_new(void);
 
 void puzzle_action(struct Puzzle16 *puz, int32_t op);
@@ -21,5 +23,13 @@ bool puzzle_is_win(struct Puzzle16 *puz);
 uint32_t puzzle_snapshot(const struct Puzzle16 *puz, int32_t *out);
 
 void puzzle_free(struct Puzzle16 *puz);
+
+struct TicTacToe *tictactoe_new(void);
+
+void tictactoe_free(struct TicTacToe *game);
+
+bool tictactoe_player1_action(struct TicTacToe *game, uint32_t grid);
+
+bool tictactoe_player2_action(struct TicTacToe *game, uint32_t grid);
 
 #endif  /* RUSTCORE_H */

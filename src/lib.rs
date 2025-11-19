@@ -62,6 +62,7 @@ pub extern "C" fn tictactoe_free(game: *mut TicTacToe) {
     }
 }
 
+#[unsafe(no_mangle)]
 pub extern "C" fn tictactoe_player1_action(game: *mut TicTacToe, grid: u32) -> bool {
     assert!(!game.is_null());
     unsafe {
@@ -78,6 +79,7 @@ pub extern "C" fn tictactoe_player1_action(game: *mut TicTacToe, grid: u32) -> b
     }
 }
 
+#[unsafe(no_mangle)]
 pub extern "C" fn tictactoe_player2_action(game: *mut TicTacToe, grid: u32) -> bool {
     assert!(!game.is_null());
     unsafe {
