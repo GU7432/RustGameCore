@@ -32,4 +32,6 @@ bool tictactoe_player1_action(struct TicTacToe *game, uint32_t grid);
 
 bool tictactoe_player2_action(struct TicTacToe *game, uint32_t grid);
 
+uint32_t tictactoe_snapshot(const struct TicTacToe *game, int32_t *out);
+
 #endif  /* RUSTCORE_H */
