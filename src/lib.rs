@@ -95,3 +95,23 @@ pub extern "C" fn tictactoe_player2_action(game: *mut TicTacToe, grid: u32) -> b
 
     }
 }
+
+#[unsafe(no_mangle)]
+pub extern "C" fn tictactoe_snapshot(game: *const TicTacToe, out: *mut i32) -> u32 {
+    if game.is_null() || game.is_null() {
+        return 0;
+    }
+    unsafe {
+        for (i, cell) in (*game).get_board_slice().iter().enumerate() {
+            match cell {
+                Some(x) => {
+                    *out.add(i) = *x;
+                },
+                None => {
+                    *out.add(i) = 0;
+                }
+            }
+        }
+    }
+    9
+}

@@ -1,5 +1,7 @@
 use std::collections::VecDeque;
 
+use rand::distributions::Open01;
+
 pub struct TicTacToe {
     board: Vec<Option<i32>>,
     turn: bool,
@@ -66,6 +68,10 @@ impl TicTacToe {
             }
             println!();
         }
+    }
+
+    pub fn get_board_slice(&self) -> &Vec<Option<i32>> {
+        return &self.board;
     }
 
     fn is_win(&self, player: u32) -> bool {
